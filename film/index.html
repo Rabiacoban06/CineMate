@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 CineMate | Film & Dizi Önerici</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation"></div>
+
+    <div class="container">
+        <h1>🎬 CineMate / Film & Dizi Önerici</h1>
+        <p class="subtext">Moduna göre rastgele öneri al!</p>
+
+        <div class="selector">
+            <label for="genre">Tür Seç:</label>
+            <select id="genre">
+                <option value="aksiyon">Aksiyon</option>
+                <option value="bilim kurgu">Bilim Kurgu</option>
+                <option value="komedi">Komedi</option>
+                <option value="dram">Dram</option>
+                <option value="korku">Korku</option>
+                <option value="romantik">Romantik</option>
+            </select>
+            <button onclick="getRecommendation()">Öneri Al</button>
+        </div>
+
+        <div id="loading" class="spinner hidden"></div>
+
+        <div id="result" class="card hidden">
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

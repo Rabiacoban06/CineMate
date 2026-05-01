@@ -1,0 +1,228 @@
+/* Genel Ayarlar ve Sıfırlama */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Google Font Uygulaması */
+body {
+    font-family: 'Poppins', sans-serif; /* Yeni font */
+    background: #121212;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative; /* Arka plan animasyonu için */
+    overflow: hidden; /* Animasyonun taşmasını engelle */
+}
+
+/* Arka Plan Animasyonu */
+.background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #1a1a1a, #2a2a2a, #3a3a3a);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    z-index: -1; /* İçeriğin arkasında kalması için */
+    opacity: 0.7; /* Hafif transparanlık */
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Ana İçerik Kutusu */
+.container {
+    max-width: 550px; /* Biraz daha genişletildi */
+    width: 95%;
+    text-align: center;
+    padding: 40px;
+    background: rgba(30, 30, 30, 0.9); /* Hafif transparanlık */
+    border-radius: 20px; /* Daha yuvarlak köşeler */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); /* Daha belirgin ve yaygın gölge */
+    position: relative;
+    z-index: 1; /* Arka planın önünde kalması için */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Hafif çerçeve */
+}
+
+/* Başlık Stilleri */
+h1 {
+    font-size: 38px; /* Daha büyük ve dikkat çekici */
+    margin-bottom: 10px;
+    color: #ffeb3b; /* Parlak sarı vurgu */
+    letter-spacing: 1px; /* Harf aralığı */
+}
+
+.subtext {
+    font-size: 17px;
+    color: #bdbdbd; /* Daha açık gri */
+    margin-bottom: 35px;
+}
+
+/* Seçici ve Butonların Kapsayıcısı */
+.selector {
+    display: flex;
+    flex-direction: column;
+    gap: 18px; /* Boşluk artırıldı */
+    margin-bottom: 35px;
+}
+
+/* SELECT ve BUTTON Stilleri */
+select, button {
+    padding: 14px; /* Daha fazla dolgu */
+    font-size: 17px;
+    border-radius: 10px; /* Daha yuvarlak */
+    border: 1px solid #4a4a4a;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Yumuşak animasyon */
+}
+
+/* SELECT Alanı */
+select {
+    background-color: #333333;
+    color: white;
+    appearance: none;
+    cursor: pointer;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+select:hover, select:focus {
+    border-color: #ffeb3b;
+    box-shadow: 0 0 10px rgba(255, 235, 59, 0.3);
+}
+
+/* Öneri Al Butonu */
+button {
+    background-color: #ffeb3b; /* Parlak sarı */
+    color: #1a1a1a; /* Koyu yazı */
+    font-weight: 600; /* Daha kalın */
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 235, 59, 0.4);
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background-color: #fdd835; /* Hover rengi */
+    transform: translateY(-2px); /* Hafif yukarı kalkma efekti */
+    box-shadow: 0 6px 20px rgba(255, 235, 59, 0.6);
+}
+
+button:active {
+    transform: translateY(0); /* Tıklamada geri gelme */
+    box-shadow: 0 2px 10px rgba(255, 235, 59, 0.3);
+}
+
+/* Yükleme Animasyonu (Spinner) */
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #ffeb3b;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto; /* Ortalamak için */
+}
+
+.spinner.hidden {
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Öneri Kartı (Sonuç Alanı) */
+.card {
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 15px;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Daha uzun geçiş */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    margin-top: 25px;
+    text-align: left;
+    display: flex; /* İçerikleri yan yana hizalamak için */
+    align-items: center; /* Dikeyde ortalamak için */
+    gap: 20px; /* Resim ve metin arasına boşluk */
+    border: 1px solid rgba(255, 235, 59, 0.2);
+}
+
+.card.hidden {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95); /* Hafif küçülerek kaybolma */
+    pointer-events: none;
+}
+
+/* Film Afişi */
+.card img {
+    width: 100px; /* Afiş boyutu */
+    height: 150px;
+    object-fit: cover; /* Resmi kutuya sığdırma */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0; /* Küçülmesini engelle */
+}
+
+/* Kart Metin İçeriği */
+.card-content {
+    flex-grow: 1; /* Kalan alanı kaplaması için */
+}
+
+.card strong {
+    font-size: 26px; /* Öneri adı */
+    display: block;
+    margin-bottom: 5px;
+    color: #ffeb3b;
+    line-height: 1.2;
+}
+
+.card p {
+    font-size: 16px;
+    color: #c0c0c0; /* Açık gri */
+    margin-bottom: 15px;
+}
+
+/* IMDb Linki */
+.card a {
+    color: #82b1ff; /* Daha canlı mavi link */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+    display: inline-flex; /* İkon eklemek için */
+    align-items: center;
+    gap: 5px;
+}
+
+.card a:hover {
+    color: #448aff; /* Hover'da daha koyu mavi */
+    text-decoration: underline;
+}
+
+/* Küçük ekranlar için düzenlemeler */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 30px;
+    }
+    .container {
+        padding: 30px;
+    }
+    .card {
+        flex-direction: column; /* Mobil'de alt alta sırala */
+        text-align: center;
+    }
+    .card img {
+        margin-bottom: 15px;
+    }
+    .card-content {
+        width: 100%;
+    }
+}
